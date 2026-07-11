@@ -1,0 +1,35 @@
+plugins {
+  id 'java'
+  id 'io.qameta.allure' version '2.12.0'
+}
+
+group = 'com.shopkart'
+version = '1.0.0'
+
+repositories { mavenCentral() }
+
+java { toolchain { languageVersion = JavaLanguageVersion.of(21) } }
+
+dependencies {
+  testImplementation platform('org.junit:junit-bom:5.11.4')
+  testImplementation 'org.junit.jupiter:junit-jupiter'
+  testImplementation 'org.junit.platform:junit-platform-suite:1.11.4'
+  testImplementation 'io.cucumber:cucumber-java:7.20.1'
+  testImplementation 'io.cucumber:cucumber-junit-platform-engine:7.20.1'
+  testImplementation 'io.rest-assured:rest-assured:5.5.0'
+  testImplementation 'com.codeborne:selenide:7.7.3'
+  testImplementation 'org.testcontainers:junit-jupiter:1.20.4'
+  testImplementation 'org.testcontainers:postgresql:1.20.4'
+  testImplementation 'org.flywaydb:flyway-core:10.22.0'
+  testImplementation 'org.postgresql:postgresql:42.7.4'
+  testImplementation 'io.qameta.allure:allure-cucumber7-jvm:2.29.0'
+  testImplementation 'org.slf4j:slf4j-simple:2.0.16'
+}
+
+test {
+  useJUnitPlatform()
+  systemProperty 'cucumber.plugin', 'pretty,io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm'
+  systemProperty 'cucumber.glue', 'com.shopkart.stepdefs,com.shopkart.support'
+}
+
+allure { version.set('2.29.0') }

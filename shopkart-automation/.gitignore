@@ -1,0 +1,6 @@
+.gradle/
+build/
+allure-results/
+allure-report/
+secrets.local.properties
+.env
