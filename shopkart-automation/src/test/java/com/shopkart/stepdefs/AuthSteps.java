@@ -1,4 +1,12 @@
 package com.shopkart.stepdefs;
-import com.shopkart.api.ShopKartApi;
-/** Authentication behavior is centralized in ShopKartApi; steps never receive passwords. */
-public final class AuthSteps { private final ShopKartApi api = new ShopKartApi(); public String tokenFor(String persona) { return api.login(persona); } }
+
+import com.shopkart.api.AuthClient;
+
+/** Authentication steps resolve credentials inside the API client. */
+public final class AuthSteps {
+    private final AuthClient authClient = new AuthClient();
+
+    public String tokenFor(String persona) {
+        return authClient.login(persona);
+    }
+}
