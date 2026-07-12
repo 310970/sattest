@@ -37,7 +37,8 @@ public final class CartSteps {
     @Then("the cart total is {int} paise")
     public void cartTotalIs(int expectedTotal) {
         world.response.then().statusCode(200);
-        assertEquals(expectedTotal, world.response.path("totalPaise"));
+        int actualTotal = world.response.path("totalPaise");
+        assertEquals(expectedTotal, actualTotal);
     }
 
     @When("a shopper searches products for {string}")

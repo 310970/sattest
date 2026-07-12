@@ -66,6 +66,7 @@ public final class OrderSteps {
         var order = orderClient.get(world.token, world.orderId);
         order.then().statusCode(200);
         assertEquals("PLACED", order.path("status"));
-        assertEquals(totalPaise, order.path("totalPaise"));
+        int actualTotal = order.path("totalPaise");
+        assertEquals(totalPaise, actualTotal);
     }
 }
