@@ -29,7 +29,7 @@ public final class CartSteps {
         world.response = cartClient.addItem(world.token, world.cartId, sku, quantity);
     }
 
-    @When("she adds {int} x {string} ({int} paise each) to her cart")
+    @When("she adds {int} x {string} \\({int} paise each\\) to her cart")
     public void sheAddsToHerCart(int quantity, String sku, int pricePaise) {
         sheAddsToNewCart(quantity, sku);
     }

@@ -61,7 +61,7 @@ public final class OrderSteps {
         assertEquals(status, world.response.path("status"));
     }
 
-    @Then("GET /api/orders/\\{id\\} returns PLACED and totalPaise {int}")
+    @Then("^GET /api/orders/\\{id\\} returns PLACED and totalPaise (\\d+)$")
     public void orderApiReturnsPlacedAndTotal(int totalPaise) {
         var order = orderClient.get(world.token, world.orderId);
         order.then().statusCode(200);
